@@ -87,3 +87,9 @@ height: 100%;
   .sticky + .content {
     padding-top: 60px;
   }
+
+
+  .bruh{
+    border-radius: 8px;
+
+  }
