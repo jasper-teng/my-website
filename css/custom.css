@@ -40,12 +40,24 @@ height: 100%;
   #navbar a {
     float: left;
     display: block;
-    color: #f2f2f2;
+    color: #eaedff;
     text-align: center;
     padding-left: 20px;
     padding-right: 20px;
     font-size: 15px;
     text-decoration: none;
+  }
+    
+  /* The sticky class is added to the navbar with JS when it reaches its scroll position */
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+  /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+  .sticky + .content {
+    padding-top: 60px;
   }
   
   
@@ -75,21 +87,35 @@ height: 100%;
     color: #f2f2f2a2;
   }
 
-  
-  /* The sticky class is added to the navbar with JS when it reaches its scroll position */
-  .sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-  }
-  
-  /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-  .sticky + .content {
-    padding-top: 60px;
-  }
+
 
 
   .bruh{
-    border-radius: 8px;
+    border-radius: 5px;
 
+  }
+
+  mark{
+    background-color: #fafeff;
+    color:#1F212A;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 1%;
+  }
+
+  /*scrollfade*/
+  .scrollFade {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .scrollFade--hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .scrollFade--visible {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .scrollFade--animate {
+    transition: opacity 0.8s ease-in-out;
   }

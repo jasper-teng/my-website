@@ -25,7 +25,6 @@
   <link rel="stylesheet" href="css/custom.css">
 
   <!-- js -->
-  <script src="js/navbar.js"></script>
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -53,9 +52,9 @@
     <div class="container">
       <div class="sixteen columns" style="margin-top: 40%; margin-bottom: 55%">
         <div class="row">
-          <div class="one-half column"">
-            <h1 style=" color: #f2f2f2;">Jasper Teng</h1>
-            <h5 style="color: #f2f2f2;">Welcome to my personal page!</h5>
+          <div class="one-half column fadein-wrapper">
+            <h1 style=" color: #f2f2f2;" class = "fadein fadein-transition">Jasper Teng</h1>
+            <h5 style="color: #f2f2f2;" class = "fadein fadein-transition">Welcome to my personal page!</h5>
           </div>
         </div>
 
@@ -68,8 +67,8 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div class="container" id="about">
     <div class="row">
-      <div class="two-thirds column" style="margin-top: 10%; margin-bottom: 20%">
-        <h1 style="margin-bottom: 10%;">About</h1>
+      <div class="two-thirds column scrollFade" style="margin-top: 10%; margin-bottom: 20%">
+        <h1 style="margin-bottom: 10%;" class="negativeSpace"><mark>About</mark></h1>
         <h5>
           <p>Hello! My name is Jasper and I studied Information Technology at Singapore Polytechnic, graduating with a
             GPA of 3.849. I'm looking to study Computer Science at a University.</p>
@@ -86,7 +85,7 @@
           </p> 
         </h5>
       </div>
-      <div class="one-third column" style="margin-top: 20%; margin-bottom: 20%">
+      <div class="one-third column scrollFade" style="margin-top: 20%; margin-bottom: 20%">
         <img class="bruh" src="images/me.png">
       </div>
     </div>
@@ -96,22 +95,22 @@
     <div class="row">
       
       <div class="two-thirds column" style="margin-top: 5%; margin-bottom: 20%">
-        <h1 style="margin-bottom: 10%;">Experience</h1>
+        <h1 style="margin-bottom: 10%;" class="scrollFade"><mark>Experience</mark></h1>
 
         
-        <div style="margin-bottom: 20%;">
-          <h4 style="margin-bottom: 0%;">Full Stack Developer, <a href="https://sgmyjb.com/"  target="_blank">sgmyjb.com</a></h4>
+        <div style="margin-bottom: 20%;" class="scrollFade">
+          <h4 style="margin-bottom: 0%;">Full Stack Developer, <a class="underline" href="https://sgmyjb.com/"  target="_blank">sgmyjb.com</a></h4>
           <h6 class="experiencetimeline" >April 2022 - Present</h6>
           <h5>Developed a website from the ground up, Front end, Back End functionalities, database management, as well as manage Google Analytics.</h5>
         </div>
 
-        <div style="margin-bottom: 20%;">
+        <div style="margin-bottom: 20%;" class="scrollFade">
           <h4 style="margin-bottom: 0%;">Software Developer Intern, Activate Interactive</h4>
           <h6 class="experiencetimeline" >September 2021 - February 2022</h6>
           <h5>Dealt with the Back-End of a government-tendered project, developing core modules during the tenure of my internship, as well as internal tools to automatically generate API Interfaces and Databases, speeding up development for multiple teams.</h5>
         </div>
 
-        <div style="margin-bottom: 20%;">
+        <div style="margin-bottom: 20%;" class="scrollFade">
           <h4 style="margin-bottom: 0%;">Image Annotation, Aidrivers Ltd.</h4>
           <h6 class="experiencetimeline">March 2021</h6>
           <h5>Assisted in training an AI by annotating a large quantity of images.</h5>
@@ -124,18 +123,22 @@
   <div class="container" id="projects">
     <div class="row">
       <div class="column" style="margin-top: 5%; margin-bottom: 20%">
-        <h1 style="margin-bottom: 10%;">Projects</h1>
-        <h5>
-          <p>In progress</p>
-        </h5>
+        <h1 style="margin-bottom: 10%;"><mark>Projects</mark></h1>
+        <div class="scrollFade">
+        <h4 style="margin-bottom: 0%;">
+          Marshalling@VR 
+        </h4>
+        <h6 class="experiencetimeline">April 2021 - September 2021</h6>
+        <h5>For my Final Year Project at Singapore Polytechnic, I created a Virtual Reality Aircraft Marshalling simulator that utilized Unity to train students on how to marshall aircraft in a virtual aircraft ramp environment. <br><br> Key technologies implemented in the simulator included rudimentry Artificial Intelligence, Multiplayer Netcode, and the creation of an action-detecting engine that maps Aircraft Marshaling motions into 3D space, scaled to the user's biometrics, as well as a notation format for the action-detecting engine. <br> <br>The application also included a companion website, titled Marshalling@Home, to teach students about the theories and procedures of Aircraft Marshalling. I received a Distinction for my work on the Final Year Project.</h5>
       </div>
+    </div>
     </div>
   </div>
 
   <div class="container" id="hobbies">
     <div class="row">
       <div class="two-thirds column" style="margin-top: 10%; margin-bottom: 20%">
-        <h1 style="margin-bottom: 10%;">Hobbies</h1>
+        <h1 style="margin-bottom: 10%;"><mark>Hobbies</mark></h1>
         <h5>
           <p>I like playing rhythm games.</p>
         </h5>
@@ -169,6 +172,8 @@
     }
 
   </script>
+  
+  <script src="js/scrollfade.js"></script>
 </body>
 
 </html>
