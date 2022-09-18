@@ -1,10 +1,12 @@
 //fuck it we ball
 //stolen from jone chau
+//TODO: replace table definition file with the one from https://bpi.poyashi.me/AAATable
+
 import { tierList } from "./tierList.js" //get the tierlist array
 
 //bullshit
-function injectTableItem(name) {
-    return `<div class="grid-item">${name}</div>`
+function injectTableItem(name, tag) {
+    return `<div class="grid-item" id=${tag}>${name}</div>`
 }
 
 function injectTableSeperator(title) {
@@ -14,6 +16,7 @@ function injectTableSeperator(title) {
 
 //abang
 function fillTable(tierList) {
+    var songtag = 0
     var iidxtable = document.getElementById("iidxtable"); //main shit
     var tableHTML = "";
 
@@ -36,8 +39,8 @@ function fillTable(tierList) {
                <div class="grid-container">`
            }
 
-            tableHTML += injectTableItem(tierList[i+1][j].name);
-
+            tableHTML += injectTableItem(tierList[i+1][j].name, songtag);
+           songtag++;
         }
         
         tableHTML += `</div>`
@@ -46,7 +49,25 @@ function fillTable(tierList) {
 
     iidxtable.innerHTML += tableHTML;
 }
+
+function toggleSong(tag){
+    document.getElementById(tag).classList.toggle("secured");
+}
 //begin bullshit
 
 fillTable(tierList);
+
+//add event listeners
+
+iidxtable.addEventListener("click", function(e) { // e = event object
+    console.log(event.target.id);
+    if(event.target != null || !isNaN(event.target)){
+        toggleSong(event.target.id);
+    }
+    // if (e.target && e.target.matches(".video-container")) {
+    //   const clickedVideoContainer = e.target;
+    //   // do stuff with `clickedVideoContainer`
+    // }
+  });
+  
 
