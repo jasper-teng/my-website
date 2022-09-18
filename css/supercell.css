@@ -1,17 +1,94 @@
-.wrapperbg {
-    width: 100%;
-    z-index: -1000000;
-}
+
 
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.background1 {
-background-image: url("/images/bg1.jpg");
+.albumart{
+background-image: url("/images/albumcover.jpg");
 height: 100%;
 }
+
+.background1 {
+background-image: url("/images/supercell.jpg");
+height: 100%;
+background-repeat: no-repeat;
+}
+
+@media (max-width: 768px){
+
+  .background1{
+    height: 100vh;
+  }
+
+}
+
+.catch{
+  position: absolute;
+  font-size: 9rem;
+  color: #026CB8;
+  padding-left: 3%;
+  padding-right: 3%;
+  margin-top: 8%;
+}
+
+.catch2{
+  position: absolute;
+  font-size: 9rem;
+  color: #026CB8;
+  padding-left: 3%;
+  margin-top: 17%;
+}  
+
+.bg-white{
+  background-color: #FFFBEE;
+}
+
+body{
+  
+  background-color: #FFFDEE;
+}
+
+.mikublue{
+  color: #026CB8;
+}
+
+/* .danmaku{
+position: absolute;
+top: 10px;
+left: 1920px;
+-webkit-animation-name: move;
+   -webkit-animation-duration: 10s;
+   -webkit-animation-iteration-count: infinite;
+   -webkit-animation-direction: normal;
+   -webkit-animation-timing-function:linear;
+}
+
+@-webkit-keyframes move {
+  0% {
+     transform:translateX(0);
+  }
+  100% {
+     transform:translateX(-10000%);
+  }
+} */
+
+
+@media (max-width: 768px){
+
+  .catch{
+    position: absolute;
+    font-size: 2.5rem;
+  }
+
+  .catch2{
+    position: absolute;
+    font-size: 2.5rem;
+  }
+
+}
+
 
 ::-webkit-scrollbar {
     width: 12px;
@@ -93,14 +170,6 @@ height: 100%;
   .bruh{
     border-radius: 5px;
 
-  }
-
-  mark{
-    background-color: #f7fbfd;
-    color:#1F212A;
-    padding-left: 2%;
-    padding-right: 2%;
-    padding-bottom: 1%;
   }
 
   /*scrollfade*/

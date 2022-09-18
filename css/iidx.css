@@ -1,0 +1,60 @@
+.iidxtable {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.grid-container {
+  display: grid;
+  grid-auto-columns: 25%;
+  grid-auto-flow: column;
+  justify-content: center;
+  background-color: #fafaf4de;
+}
+
+.grid-seperator {
+  padding: 5px;
+  
+  color: #fafaf4de;
+  font-size: 2rem;
+  text-align: center;
+
+  background-color: purple;
+}
+
+.grid-item{
+  color: #000000;
+  font-size: 1.7rem;
+  text-align: center;
+  min-height: 50px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.grid-item:hover{
+  background-color: aqua;
+}
+
+
+
+
+/* stupid animations */
+
+
+.lamped {
+  background-image: linear-gradient(
+    -45deg, 
+    rgba(59,173,227,1) 0%, 
+    rgba(87,111,230,1) 25%, 
+    rgba(152,68,183,1) 51%, 
+    rgba(255,53,127,1) 100%
+);  
+animation: AnimateBG 0.2s ease infinite;
+}
+
+@keyframes AnimateBG { 
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
