@@ -2,7 +2,7 @@
 //stolen from jone chau
 //TODO: replace table definition file with the one from https://bpi.poyashi.me/AAATable
 
-import { tierList } from "./tierList.js" //get the tierlist array
+import { tierList } from "./tierList2.js" //get the tierlist array
 
 //bullshit
 function injectTableItem(name, tag) {
@@ -21,6 +21,7 @@ function fillTable(tierList) {
     var tableHTML = "";
 
     //look at the array
+    //janky hack to invert json
     for (var i = 0; i < Object.keys(tierList).length; i++) {
 
         //injection of the seperators
@@ -28,21 +29,21 @@ function fillTable(tierList) {
 
         //the below part uses name matching, watch out.
         //watch out right here VVVVVV TODO:
-        for (var j = 0; j < tierList[i+1].length; j++) { //makes the songs
-            
-            if(j==0){
+        for (var j = 0; j < tierList[Object.keys(tierList)[i]].length; j++) { //makes the songs
+
+            if (j == 0) {
                 tableHTML += `<div class="grid-container">`;
             }
 
             if (j % 4 == 0) {
                 tableHTML += `</div>
                <div class="grid-container">`
-           }
+            }
 
-            tableHTML += injectTableItem(tierList[i+1][j].name, songtag);
-           songtag++;
+            tableHTML += injectTableItem(tierList[Object.keys(tierList)[i]][j].name, songtag);
+            songtag++;
         }
-        
+
         tableHTML += `</div>`
 
     }
@@ -50,23 +51,26 @@ function fillTable(tierList) {
     iidxtable.innerHTML += tableHTML;
 }
 
-function toggleSong(tag){
+function toggleSong(tag) {
     document.getElementById(tag).classList.toggle("secured");
 }
 
-function updateCount(){
-    document.getElementById("count").innerHTML = document.getElementsByClassName("secured").length + " / " + document.getElementsByClassName("grid-item").length; 
-    document.getElementsByClassName(secured).length
+function updateCount() {
+    document.getElementById("count").innerHTML = document.getElementsByClassName("secured").length + " / " + document.getElementsByClassName("grid-item").length;
+    document.getElementsByClassName("secured").length
 }
+
 //begin bullshit
 
 fillTable(tierList);
 
+
+
+
 //add event listeners
 
-iidxtable.addEventListener("click", function(e) { // e = event object
-    console.log(event.target.id);
-    if(event.target != null || !isNaN(event.target)){
+iidxtable.addEventListener("click", function (e) { // e = event object
+    if (event.target.classList.contains("grid-item")) {
         toggleSong(event.target.id);
         updateCount();
     }
@@ -74,6 +78,6 @@ iidxtable.addEventListener("click", function(e) { // e = event object
     //   const clickedVideoContainer = e.target;
     //   // do stuff with `clickedVideoContainer`
     // }
-  });
-  
+}, {passive:true});
+
 
