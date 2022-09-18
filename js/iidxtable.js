@@ -53,6 +53,11 @@ function fillTable(tierList) {
 function toggleSong(tag){
     document.getElementById(tag).classList.toggle("secured");
 }
+
+function updateCount(){
+    document.getElementById("count").innerHTML = document.getElementsByClassName("secured").length + " / " + document.getElementsByClassName("grid-item").length; 
+    document.getElementsByClassName(secured).length
+}
 //begin bullshit
 
 fillTable(tierList);
@@ -63,6 +68,7 @@ iidxtable.addEventListener("click", function(e) { // e = event object
     console.log(event.target.id);
     if(event.target != null || !isNaN(event.target)){
         toggleSong(event.target.id);
+        updateCount();
     }
     // if (e.target && e.target.matches(".video-container")) {
     //   const clickedVideoContainer = e.target;
