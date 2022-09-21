@@ -60,9 +60,52 @@ function updateCount() {
     document.getElementsByClassName("secured").length
 }
 
+function generatePassword() {
+    var songList = document.getElementsByClassName("grid-item");
+    var pwString = ""
+    for (var i = 0; i < songList.length; i++) {
+        songList[i].classList.contains("secured") ? pwString += "1" : pwString += "0";
+    }
+    //after the loop, it becomes a binary representation of your songlist
+
+    return pwString;
+}
+
+function massUpdateCount(string) { //assuming this is the binary string of 400+
+    if (!string) { return; }
+
+    for (var i = 0; i < string.length; i++) {
+        var songGridItem = document.getElementById(i);
+
+        if (!songGridItem) {
+            continue;
+        }
+
+        if (string[i] == 1) {
+            songGridItem.classList.add('secured');
+        }
+        
+    }
+
+    updateCount();
+}
+
+function updateStorage(pwString) { //allah
+    console.log("updating");
+    localStorage.setItem('songs', pwString); //lmao
+}
+
+function retrieveStorage() {
+    return localStorage.getItem('songs');
+}
 //begin bullshit
 
 fillTable(tierList);
+
+//TnKYeKaq7]]%ZuECpk0!=Q'[q.3Lqa&9&O(LI[%-&:d:O8H]GU8Hjj""Loj`6:irK1_j_4
+
+
+
 
 
 
@@ -73,11 +116,17 @@ iidxtable.addEventListener("click", function (e) { // e = event object
     if (event.target.classList.contains("grid-item")) {
         toggleSong(event.target.id);
         updateCount();
+
+        updateStorage(generatePassword());
+
     }
     // if (e.target && e.target.matches(".video-container")) {
     //   const clickedVideoContainer = e.target;
     //   // do stuff with `clickedVideoContainer`
     // }
-}, {passive:true});
+}, { passive: true });
 
+window.addEventListener('load', (event) => {
+    massUpdateCount(retrieveStorage());
+});
 
