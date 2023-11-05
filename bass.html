@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Jasper Teng</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300&display=swap" rel="stylesheet">
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/custom.css">
+
+  <!-- js -->
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vexflow@4.2.2/build/cjs/vexflow.js"></script>
+</head>
+
+<style>
+  body {
+    background-color: #eadece;
+    color: #6d5a4e;
+    
+  }
+
+  mark {
+    background-color: #909f72;
+    color: #eadece;
+    font-weight: bold;
+  }
+
+  .experiencetimeline {
+    color:#6d5a4e;
+  }
+</style>
+<body>
+
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container" id="about">
+
+      <div id="output">
+
+      </div>
+
+      
+    </div>
+  </div>
+
+  <script>
+    const { Factory, EasyScore, System } = Vex.Flow;
+
+    const vf = new Factory({
+      renderer: { elementId: 'output', width: 500, height: 800 },
+    });
+
+    const score = vf.EasyScore();
+    const system = vf.System();
+
+    system
+      .addStave({
+        voices: [
+          score.voice(score.notes('B4/q, E4, B4, A4'), {clef: 'bass'}),
+        ],
+      })
+      .addClef('bass')
+
+    vf.draw();
+
+
+    //thank you w3schools
+
+    // When the user scrolls the page, execute myFunction
+    window.onload = function () { stickynavbar() };
+    window.onscroll = function () { stickynavbar() };
+
+    // Get the navbar
+    var navbar = document.getElementById("navbar");
+
+    // Get the offset position of the navbar
+    var sticky = navbar.offsetTop;
+
+    // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    function stickynavbar() {
+      if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky")
+      } else {
+        navbar.classList.remove("sticky");
+      }
+    }
+
+  </script>
+
+  <script src="js/scrollfade.js"></script>
+
+</body>
+
+</html>
