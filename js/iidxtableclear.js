@@ -2,7 +2,7 @@
 //stolen from jone chau
 //TODO: replace table definition file with the one from https://bpi.poyashi.me/AAATable
 
-import { tierList } from "./cleartable.js" //get the tierlist array
+import { tierList } from "./cleartable2.js" //get the tierlist array
 
 //bullshit
 function injectTableItem(name, tag) {
@@ -57,7 +57,7 @@ function toggleSong(tag) {
 
 function updateCount() {
     document.getElementById("count").innerHTML = document.getElementsByClassName("secured").length + " / " + document.getElementsByClassName("grid-item").length;
-    document.getElementsByClassName("secured").length
+    document.getElementById("count").innerHTML += " (" + ((document.getElementsByClassName("secured").length / document.getElementsByClassName("grid-item").length)*100).toFixed(1) +"%" + ")";
 }
 
 function generatePassword() {
