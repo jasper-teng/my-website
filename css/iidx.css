@@ -3,7 +3,8 @@
 }
 
 .grid-container {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   grid-auto-columns: 25%;
   grid-auto-flow: column;
   justify-content: center;
@@ -12,7 +13,7 @@
 
 .grid-seperator {
   padding: 5px;
-  
+  width:100%;
   color: #fafaf4de;
   font-size: 2rem;
   text-align: center;
@@ -27,11 +28,17 @@
   text-align: center;
   min-height: 50px;
   padding: 5px;
+  width: calc(25% - 10px); /* 25% width for 4 items in a row with a 5px margin */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.search{
+  color:#000000;
+  width: 100%;
+  text-align: center;
+}
 
 /* .grid-item:hover{
   background-color: aqua;
@@ -42,6 +49,14 @@
   color: #fafaf4de;
 }
 
+.hide{
+  display:none;
+  transition: opacity 0.5s linear;
+  -webkit-transition: opacity 0.5s linear;
+  -moz-transition: opacity 0.5s linear;
+  -o-transition: opacity 0.5s linear;
+  -ms-transition: opacity 0.5s linear;
+}
 /* stupid animations */
 
 
@@ -59,3 +74,4 @@ animation: AnimateBG 0.2 infinite;
   50%{background-position:100% 50%}
   100%{background-position:0% 50%}
 }
+
