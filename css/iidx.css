@@ -35,9 +35,10 @@
 }
 
 .search{
-  color:#000000;
+  color:#1F212A;
   width: 100%;
   text-align: center;
+  background-color: #fafaf4de !important;
 }
 
 /* .grid-item:hover{
@@ -59,6 +60,18 @@
 }
 /* stupid animations */
 
+@keyframes append-animate {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;	
+	}
+}
+
+.new-box {
+	animation: append-animate .3s linear;
+}
 
 .lamped {
   background-image: linear-gradient(

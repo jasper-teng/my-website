@@ -2,78 +2,123 @@
 //https://www.fusejs.io/
 //TODO: replace table definition file with the one from https://bpi.poyashi.me/AAATable
 const Fuse = window.Fuse;
-import { tierList } from "./cleartable2.js" //get the tierlist array
 import { songlist } from "./songlist.js"
+import { tierlistID } from "./tierListID.js"
 
 
 //search related
 
 
 const fuseOptions = {
-	// isCaseSensitive: false,
-	// includeScore: false,
-	// shouldSort: true,
-	// includeMatches: false,
-	// findAllMatches: false,
-	// minMatchCharLength: 1,
-	// location: 0,
-	threshold: 0.2,
-	// distance: 100,
-	// useExtendedSearch: false,
-	// ignoreLocation: false,
-	// ignoreFieldNorm: false,
-	// fieldNormWeight: 1,
-	keys: [
-		"name",
-		"alias"
-	]
+    // isCaseSensitive: false,
+    // includeScore: false,
+    // shouldSort: true,
+    // includeMatches: false,
+    // findAllMatches: false,
+    // minMatchCharLength: 1,
+    // location: 0,
+    threshold: 0.2,
+    // distance: 100,
+    // useExtendedSearch: false,
+    // ignoreLocation: false,
+    // ignoreFieldNorm: false,
+    // fieldNormWeight: 1,
+    keys: [
+        "name",
+        "alias"
+    ]
 };
 
-const fuse = new Fuse(songlist, fuseOptions);
+const fuse = new Fuse(Object.values(songlist), fuseOptions);
 
-document.getElementById("searchbar").addEventListener("change", searchfn);
+document.getElementById("searchbar").addEventListener("change",searchfn);
 
-function searchfn(){
-    console.log("awooga");
+function searchfn() {
     var x = document.getElementById("searchbar").value;
-    console.log(fuse.search(x));
     displayResults(fuse.search(x));
 }
 
-function displayResults(results){
+function displayResults(results) {
     //redraw the table view fuck it
-    if(results.length == 0){
+    // if (results.length == 0) {
+    //     filltablenew();
+    //     return;
+    // }
+    // var iidxtable = document.getElementById("iidxtable");
+    // var tableHTML = ``;
+
+    // tableHTML += injectTableSeperator("search results: " + document.getElementById("searchbar").value);
+
+    // for (var x in results) {
+    //     tableHTML += injectTableItem(results[x].item.name, results[x].item.id);
+    // }
+
+    // iidxtable.children[0].innerHTML = tableHTML;
+
+    //dont redraw the table not fuck it
+
+    //now that we have the filtered table, do something to the dom
+
+    //implementation of a sorting fuction. 
+    //locate the searched songs, 
+    //put into a temp array, 
+    //then push on the top
+    //redraw first
+    filltablenew();
+    if (results.length == 0) {
         filltablenew();
         return;
     }
-    var iidxtable = document.getElementById("iidxtable");
-    var tableHTML = ``;
+    var temp = []
     for(var x in results){
-        tableHTML += injectTableItem(results[x].item.name, results[x].item.id);
+        temp.push(document.getElementById(results[x].refIndex));
+    }
+    
+    for (var x in temp){
+        var parent = temp[x].parentNode;
+        var detached = parent.removeChild(temp[x]);
+        parent.insertBefore(detached, parent.childNodes[0]);
     }
 
-    tableHTML += ``
+    //hide all other songs
+    var table = document.getElementsByClassName("grid-container")[0];
+    console.log(table.childNodes.length);
 
-    iidxtable.children[0].innerHTML = tableHTML; 
+    for(var i=temp.length;i<table.childNodes.length;i++){
+        console.log("hiding");
+        table.childNodes[i].classList.add("hide");
+    }
 
+    table.innerHTML = injectTableSeperator("Search Results: " + document.getElementById("searchbar").value) + table.innerHTML;
+    
     return;
 }
 
+var tablenodes; //table nodes should be internal list of all songs
 
 //follow this logic for new sorting method:
 //load everything, then decide to sort later
 
-function filltablenew(){
+function filltablenew() {
+
     var iidxtable = document.getElementById("iidxtable"); //main shit
     var tableHTML = ``;
 
-    for(var x in songlist){
-        tableHTML += injectTableItem(songlist[x].name, songlist[x].id);
+    for (var x in tierlistID) {
+        tableHTML += injectTableSeperator(x)
+        for (var y in tierlistID[x]) {
+            //console.log( Object.keys(songlist)[tierlistID[x][y]] );
+            tableHTML += injectTableItem(songlist[tierlistID[x][y]].name, Object.keys(songlist)[tierlistID[x][y]]);
+        }
     }
 
     tableHTML += ``
 
     iidxtable.children[0].innerHTML = tableHTML;
+    //make a list stored of these fuckers
+
+    tablenodes = iidxtable.children[0].getElementsByClassName("grid-item");
+    massUpdateCount(retrieveStorage());
     return;
 }
 
@@ -85,50 +130,14 @@ function filltablenew(){
 
 //bullshit
 function injectTableItem(name, tag) {
-    return `<div class="grid-item" id=${tag}>${name}</div>`
+    return `<div class="grid-item new-box" id=${tag}>${name}</div>`
 }
 
 function injectTableSeperator(title) {
-    return `<div class="grid-seperator lamped">${title}</div>`
+    return `<div class="grid-seperator lamped new-box">${title}</div>`
 }
 
 
-//abang
-function fillTable(tierList) {
-    var songtag = 0
-    var iidxtable = document.getElementById("iidxtable"); //main shit
-    var tableHTML = "";
-
-    //look at the array
-    //janky hack to invert json
-    for (var i = 0; i < Object.keys(tierList).length; i++) {
-
-        //injection of the seperators
-        tableHTML += injectTableSeperator(Object.keys(tierList)[i]);
-
-        //the below part uses name matching, watch out.
-        //watch out right here VVVVVV TODO:
-        for (var j = 0; j < tierList[Object.keys(tierList)[i]].length; j++) { //makes the songs
-
-            if (j == 0) {
-                tableHTML += `<div class="grid-container">`;
-            }
-
-            if (j % 4 == 0) {
-                tableHTML += `</div>
-               <div class="grid-container">`
-            }
-
-            tableHTML += injectTableItem(tierList[Object.keys(tierList)[i]][j].name, songtag);
-            songtag++;
-        }
-
-        tableHTML += `</div>`
-
-    }
-
-    iidxtable.innerHTML += tableHTML;
-}
 
 function toggleSong(tag) {
     document.getElementById(tag).classList.toggle("secured");
@@ -136,34 +145,27 @@ function toggleSong(tag) {
 
 function updateCount() {
     document.getElementById("count").innerHTML = document.getElementsByClassName("secured").length + " / " + document.getElementsByClassName("grid-item").length;
-    document.getElementById("count").innerHTML += " (" + ((document.getElementsByClassName("secured").length / document.getElementsByClassName("grid-item").length)*100).toFixed(1) +"%" + ")";
+    document.getElementById("count").innerHTML += " (" + ((document.getElementsByClassName("secured").length / document.getElementsByClassName("grid-item").length) * 100).toFixed(1) + "%" + ")";
 }
 
-function generatePassword() {
-    var songList = document.getElementsByClassName("grid-item");
-    var pwString = ""
-    for (var i = 0; i < songList.length; i++) {
-        songList[i].classList.contains("secured") ? pwString += "1" : pwString += "0";
-    }
-    //after the loop, it becomes a binary representation of your songlist
 
+function generatePassword() { //strings in javascript are immutable, ridiculous.
+    var pwString = '';
+    for(var i=0; i<Object.keys(songlist).length;i++){
+        document.getElementById(i).classList.contains("secured") ? pwString += 1 : pwString += 0;
+    }
     return pwString;
 }
 
-function massUpdateCount(string) { //assuming this is the binary string of 400+
+function massUpdateCount(string) { //assuming this is the binary string of 500+
     if (!string) { return; }
 
     for (var i = 0; i < string.length; i++) {
-        var songGridItem = document.getElementById(i);
-
-        if (!songGridItem) {
-            continue;
-        }
 
         if (string[i] == 1) {
-            songGridItem.classList.add('secured');
+            document.getElementById(i).classList.add("secured");
         }
-        
+
     }
 
     updateCount();
@@ -177,16 +179,13 @@ function updateStorage(pwString) { //allah
 function retrieveStorage() {
     return localStorage.getItem('songscleartable');
 }
+
+
 //begin bullshit
 
 filltablenew(songlist);
 
 //TnKYeKaq7]]%ZuECpk0!=Q'[q.3Lqa&9&O(LI[%-&:d:O8H]GU8Hjj""Loj`6:irK1_j_4
-
-
-
-
-
 
 
 //add event listeners
@@ -208,4 +207,3 @@ iidxtable.addEventListener("click", function (e) { // e = event object
 window.addEventListener('load', (event) => {
     massUpdateCount(retrieveStorage());
 });
-
