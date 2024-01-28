@@ -2806,7 +2806,43 @@ const songlist = {
         "alias": [
             "shakunetsu camellia"
         ]
-    }
+    },
+    "513": {
+        "name": "Out of Control",
+        "legg": false,
+        "alias": []
+    },
+    "514": {
+        "name": "Vermilion Carol",
+        "legg": false,
+        "alias": []
+    },
+    "515": {
+        "name": "O/D*20[L]",
+        "legg": true,
+        "alias": [
+            "od20"
+        ]
+    },
+    "516": {
+        "name": "MAXIMUM CHEAT GIRL",
+        "legg": false,
+        "alias": []
+    },
+    "517": {
+        "name": "表裏一体！？怪盗いいんちょの悩み[L]",
+        "legg": true,
+        "alias": [
+            "Gattsuri inkya!? Kaitou iincho no okkuu"
+        ]
+    },
+    "518": {
+        "name": "Glitch N Ride",
+        "legg": false,
+        "alias": [
+        ]
+    },
+
 }
 
 export { songlist }
