@@ -140,19 +140,34 @@ function injectTableSeperator(title) {
 
 
 function toggleSong(tag) {
-    document.getElementById(tag).classList.toggle("secured");
+    if(document.getElementById(tag).classList.contains("secured")){
+        document.getElementById(tag).classList = "grid-item new-box maxminus"
+    }else if (document.getElementById(tag).classList.contains("maxminus")){
+        document.getElementById(tag).classList = "grid-item new-box"
+    }else {
+        document.getElementById(tag).classList = "grid-item new-box secured"
+    }
+
 }
 
 function updateCount() {
-    document.getElementById("count").innerHTML = document.getElementsByClassName("secured").length + " / " + document.getElementsByClassName("grid-item").length;
-    document.getElementById("count").innerHTML += " (" + ((document.getElementsByClassName("secured").length / document.getElementsByClassName("grid-item").length) * 100).toFixed(1) + "%" + ")";
+    document.getElementById("count").innerHTML = document.getElementsByClassName("secured").length + document.getElementsByClassName("maxminus").length + " / " + document.getElementsByClassName("grid-item").length;
+    document.getElementById("count").innerHTML += " (" + (((document.getElementsByClassName("secured").length + document.getElementsByClassName("maxminus").length) / document.getElementsByClassName("grid-item").length) * 100).toFixed(1) + "%" + ")";
 }
 
 
 function generatePassword() { //strings in javascript are immutable, ridiculous.
     var pwString = '';
     for(var i=0; i<Object.keys(songlist).length;i++){
-        document.getElementById(i).classList.contains("secured") ? pwString += 1 : pwString += 0;
+        if(document.getElementById(i).classList.contains("secured")){
+            pwString +=1
+        }
+        else if(document.getElementById(i).classList.contains("maxminus")){
+            pwString +=2
+        }
+        else{
+            pwString += 0
+        }
     }
     return pwString;
 }
@@ -164,6 +179,9 @@ function massUpdateCount(string) { //assuming this is the binary string of 500+
 
         if (string[i] == 1) {
             document.getElementById(i).classList.add("secured");
+        }
+        if (string[i] == 2) {
+            document.getElementById(i).classList.add("maxminus");
         }
 
     }

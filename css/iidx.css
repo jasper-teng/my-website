@@ -51,6 +51,11 @@
   color: #fafaf4de;
 }
 
+.maxminus{
+  background-color: #da0000;
+  color: #fafaf4de;
+}
+
 .hide{
   display:none;
   transition: opacity 0.5s linear;
