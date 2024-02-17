@@ -2842,6 +2842,20 @@ const songlist = {
         "alias": [
         ]
     },
+    "519": {
+        "name": "Xb10r",
+        "legg": false,
+        "alias": [
+            "temblor",
+            "xblor"
+        ]
+    },
+    "520": {
+        "name": "Ambivalent Vermillia",
+        "legg": false,
+        "alias": [
+        ]
+    }
 
 }
 

@@ -153,6 +153,10 @@ function toggleSong(tag) {
 function updateCount() {
     document.getElementById("count").innerHTML = document.getElementsByClassName("secured").length + document.getElementsByClassName("maxminus").length + " / " + document.getElementsByClassName("grid-item").length;
     document.getElementById("count").innerHTML += " (" + (((document.getElementsByClassName("secured").length + document.getElementsByClassName("maxminus").length) / document.getElementsByClassName("grid-item").length) * 100).toFixed(1) + "%" + ")";
+    document.getElementById("count").innerHTML += "<br />"
+    document.getElementById("count").innerHTML += document.getElementsByClassName("maxminus").length + " / " + document.getElementsByClassName("grid-item").length;
+    document.getElementById("count").innerHTML += " (" + ((document.getElementsByClassName("maxminus").length) / document.getElementsByClassName("grid-item").length * 100).toFixed(1) + "%" + ")";
+
 }
 
 
@@ -197,6 +201,21 @@ function updateStorage(pwString) { //allah
 function retrieveStorage() {
     return localStorage.getItem('songscleartable');
 }
+
+function compressStringOptimized(str) {
+    const compressed = [];
+    let count = 1;
+    for (let i = 0; i < str.length; i++) {
+      if (str[i] === str[i + 1]) {
+        count++;
+      } else {
+        compressed.push(str[i] + count);
+        count = 1;
+      }
+    }
+    const compressedString = compressed.join('');
+    return compressedString.length < str.length ? compressedString : str;
+ }
 
 
 //begin bullshit
