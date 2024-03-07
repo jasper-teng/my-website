@@ -2855,7 +2855,25 @@ const songlist = {
         "legg": false,
         "alias": [
         ]
-    }
+    },
+    "521": {
+        "name": "Sword of Vengeance",
+        "legg": false,
+        "alias": [
+        ]
+    },
+    "522": {
+        "name": "Million Dollar",
+        "legg": false,
+        "alias": [
+        ]
+    },
+    "523": {
+        "name": "Cadenza",
+        "legg": false,
+        "alias": [
+        ]
+    },
 
 }
 
