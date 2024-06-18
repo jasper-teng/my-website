@@ -2254,13 +2254,13 @@ const songlist = {
     "414": {
         "name": "真 地獄超特急 -HELL or HELL-",
         "legg": false,
-        "alias": []
+        "alias": ["Shin jigoku choutokkyu -HELL or HELL-"]
     },
     "415": {
         "name": "ピアノ独奏無言歌 \"灰燼\"",
         "legg": false,
         "alias": [
-            "Shin jigoku choutokkyu -HELL or HELL-"
+            "kaijin"
         ]
     },
     "416": {
