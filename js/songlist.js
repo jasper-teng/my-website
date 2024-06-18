@@ -2874,6 +2874,81 @@ const songlist = {
         "alias": [
         ]
     },
+    "524": {
+        "name": "Demon March",
+        "legg": false,
+        "alias": [
+        ]
+    },
+    "525": {
+        "name": "惑星鉄道",
+        "legg": false,
+        "alias": [
+            "planetary express", "wakusei tetsudou"
+        ]
+    },
+    "526": {
+        "name": "The Last Apocalypse",
+        "legg": false,
+        "alias": [
+        ]
+    },
+    "527": {
+        "name": "Level 5",
+        "legg": false,
+        "alias": [
+        ]
+    },
+    "528": {
+        "name": "ACTØ",
+        "legg": false,
+        "alias": [
+        ]
+    },
+    "529": {
+        "name": "電腦都市",
+        "legg": false,
+        "alias": [
+        ]
+    },
+    "530": {
+        "name": "Miracle 5ympho X[L]",
+        "legg": true,
+        "alias": [
+        ]
+    },
+    "531": {
+        "name": "Saturn[L]",
+        "legg": true,
+        "alias": [
+        ]
+    },
+    "532": {
+        "name": "華蝶風雪[L]",
+        "legg": true,
+        "alias": [
+            "kachou fuugetsu"
+        ]
+    },
+    "533": {
+        "name": "SOLID WYVERN[L]",
+        "legg": true,
+        "alias": [
+        ]
+    },
+    "534": {
+        "name": "Stereo Beasts",
+        "legg": false,
+        "alias": [
+        ]
+    },
+    "535": {
+        "name": "BLAZING_LAZER",
+        "legg": false,
+        "alias": [
+        ]
+    },
+
 
 }
 
