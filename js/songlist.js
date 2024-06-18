@@ -2948,6 +2948,18 @@ const songlist = {
         "alias": [
         ]
     },
+    "536": {
+        "name": "KING[L]",
+        "legg": true,
+        "alias": [
+        ]
+    },
+    "537": {
+        "name": "俺ら東京さ行ぐだ[L]",
+        "legg": true,
+        "alias": [ "ora tokyo sa iguda"
+        ]
+    },
 
 
 }
