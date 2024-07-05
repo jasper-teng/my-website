@@ -2960,6 +2960,28 @@ const songlist = {
         "alias": [ "ora tokyo sa iguda"
         ]
     },
+    "538": {
+        "name": "今宵、ロマンス横丁。",
+        "legg": false,
+        "alias": [ "koyou, romance yokocho"
+        ]
+    },
+    "539": {
+        "name": "CODE:2",
+        "legg": false,
+        "alias": [ 
+        ]
+    },
+    "540": {
+        "name": "Vulnerability",
+        "legg": false,
+        "alias": [ "" ]
+    },
+    "541": {
+        "name": "紫陽花 -AZISAI-[L]",
+        "legg": true,
+        "alias": []
+    },
 
 
 }

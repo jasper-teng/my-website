@@ -106,6 +106,7 @@ function filltablenew() {
 
     for (var x in tierlistID) {
         tableHTML += injectTableSeperator(x)
+        var sortedsongs = tierlistID[x];
         for (var y in tierlistID[x]) {
             //console.log( Object.keys(songlist)[tierlistID[x][y]] );
             tableHTML += injectTableItem(songlist[tierlistID[x][y]].name, Object.keys(songlist)[tierlistID[x][y]]);
