@@ -66,7 +66,7 @@ function displayResults(results) {
 //load everything, then decide to sort later
 
 function filltablenew(list, normalorhard) {
-    var tiers = ["未定","個人差F","地力F","個人差E","地力E","地力D","個人差D","個人差C","地力C","個人差B","地力B","個人差B+","地力B+","個人差A","地力A","個人差A+","地力A+","個人差S","地力S","個人差S+","地力S+"]
+    var tiers = ["未定","個人差F","地力F","個人差E","地力E","個人差D","地力D","個人差C","地力C","個人差B","地力B","個人差B+","地力B+","個人差A","地力A","個人差A+","地力A+","個人差S","地力S","個人差S+","地力S+"]
     
     var iidxtable = document.getElementById("iidxtable"); //main shit
     var tableHTML = ``;
