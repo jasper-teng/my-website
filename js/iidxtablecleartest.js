@@ -3,6 +3,8 @@
 //TODO: replace table definition file with the one from https://bpi.poyashi.me/AAATable
 const Fuse = window.Fuse;
 
+const idregex1 = /[\s\&]/g;
+const idregex2 = /(amp;)/g;//fucking hate regex
 var list = "";
 var fuse;
 //search related
@@ -40,7 +42,7 @@ function displayResults(results) {
     }
     var temp = []
     for (var x in results) {
-        temp.push(document.getElementById(results[x].item.name.replace(/\s/g, '')));
+        temp.push(document.getElementById(results[x].item.name.replace(idregex1,'').replace(idregex2,'')));
     }
 
     for (var x in temp) {
@@ -98,7 +100,7 @@ function filltablenew(list, normalorhard) {
 
 //bullshit
 function injectTableItem(name, tag) {
-    return `<div class="grid-item new-box" id=${name.replace(/\s/g, '')}>${name}</div>`
+    return `<div class="grid-item new-box" id="${name.replace(idregex1,'').replace(idregex2,'')}">${name}</div>`
 }
 
 function injectTableSeperator(title) {
@@ -154,14 +156,13 @@ function generatePassword() { //strings in javascript are immutable, ridiculous.
         else {
             status = 0
         }
-
-        password.push({name: songblocks[x].innerHTML.replace(/\s/g, ''), status: status})
+        password.push({name: songblocks[x].innerHTML.replace(idregex1,'').replace(idregex2,''), status: status})
     }
 
     return JSON.stringify(password);
 }
 
-function massUpdateCount(string) { //assuming this is the binary string of 500+
+function massUpdateCount(string) { //function to fill in grid
     if (!string) { return; }
 
     var jsonString = JSON.parse(string);
